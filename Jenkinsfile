@@ -42,7 +42,7 @@ node {
         break
     }
 
-    def validBuildBranches = '.*(master|qa\\d*|release|main|prod|PR-\\d*).*'
+    def validBuildBranches = '.*(main|qa\\d*|release|main|prod|PR-\\d*).*'
     def matched = (env.BRANCH_NAME ==~ validBuildBranches)
 
     if(!matched) {
@@ -59,7 +59,7 @@ node {
     stage ('Install & Build') {
       sh 'cat /home/jenkins/npmrc/.npmrc > ~/.npmrc'
 	    sh 'npm cache clean -f'
-      sh 'npm config set registry https://innroad.jfrog.io/innroad/api/npm/innroad-npm/'
+  /*    sh 'npm config set registry https://innroad.jfrog.io/innroad/api/npm/innroad-npm/' */
       sh "npm install -no-cache"
       sh "npm run build"
       sh "cd server && npm install"
