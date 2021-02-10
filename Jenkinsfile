@@ -1,6 +1,6 @@
 
 
-node ('any') {
+node {
 
     def forcePublish             = false
     def autoDeployBranch         = false
