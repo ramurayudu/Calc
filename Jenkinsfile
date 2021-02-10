@@ -2,7 +2,7 @@
 
 node {
 
-env.NODE_ENV = 'dev'
+env.NODE_ENV = 'main'
 
     def forcePublish             = true
     def autoDeployBranch         = true
