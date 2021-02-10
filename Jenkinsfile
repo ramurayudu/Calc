@@ -2,9 +2,9 @@
 
 node {
 
-    def forcePublish             = false
-    def autoDeployBranch         = false
-    def isPublishBranch          = false
+    def forcePublish             = true
+    def autoDeployBranch         = true
+    def isPublishBranch          = true
     def versionSuffix            = ""
     def assemblyVersion          = ""
     def nugetPackageArray        = [] as String[]
