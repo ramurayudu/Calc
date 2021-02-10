@@ -10,7 +10,7 @@ node {
     def nugetPackageArray        = [] as String[]
     def testAssemblies           = [] as String[]
     def projectsToPublish        = [] as String[]
-    def deploymentImageName      = "support-web"
+    def deploymentImageName      = "Calc"
     def deploymentNamespace      = "support"
     def hotfixRegex              = "hotfix\\/.*"
     def qaRegex                  = "qa\\d?"
@@ -27,29 +27,13 @@ node {
 
     switch(env.BRANCH_NAME) {
 
-        case 'develop':
+        case 'main':
             versionSuffix       = ""
             isPublishBranch     = true
             autoDeployBranch    = true
         break
 
-        case ~/$qaRegex/:
-            versionSuffix       = ""
-            isPublishBranch     = true
-            autoDeployBranch    = true
-        break
-
-        case 'master':
-            versionSuffix       = ""
-            isPublishBranch     = true
-            autoDeployBranch    = false
-        break
-
-        case 'prod':
-            versionSuffix       = ""
-            isPublishBranch     = true
-            autoDeployBranch    = false
-        break
+        
 
         default:
             versionSuffix       = ""
@@ -58,7 +42,7 @@ node {
         break
     }
 
-    def validBuildBranches = '.*(master|qa\\d*|release|develop|prod|PR-\\d*).*'
+    def validBuildBranches = '.*(master|qa\\d*|release|main|prod|PR-\\d*).*'
     def matched = (env.BRANCH_NAME ==~ validBuildBranches)
 
     if(!matched) {
