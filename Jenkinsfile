@@ -64,7 +64,7 @@ env.NODE_ENV = 'main'
   /*    sh 'npm config set registry https://innroad.jfrog.io/innroad/api/npm/innroad-npm/' */
       sh "npm install -no-cache"
       sh "npm run build"
-      sh "docker login devopsinnroad.jfrog.io -u jenkins -p ${jfrog}"
+      sh "docker login devopsinnroad.jfrog.io -u srinivas.rayudu94@gmail.com -p ${jfrog}"
     }
 
     
