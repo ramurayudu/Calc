@@ -12,18 +12,18 @@ env.NODE_ENV = 'main'
     def nugetPackageArray        = [] as String[]
     def testAssemblies           = [] as String[]
     def projectsToPublish        = [] as String[]
-    def deploymentImageName      = "Calc"
+    def deploymentImageName      = "calc"
     def deploymentNamespace      = "support"
     def hotfixRegex              = "hotfix\\/.*"
     def qaRegex                  = "qa\\d?"
 
     def dockerPublishSettings = [
-      [imageName: "Calc", dockerFile: "Dockerfile"],
+      [imageName: "calc", dockerFile: "Dockerfile"],
       
     ]
 
     def dockerDeploymentSettings = [
-      [deploymentName: "Calc", deploymentContext: "${env.BRANCH_NAME}", deploymentNamespace: "support", containerName: "calc", deploymentImageName: "calc"],
+      [deploymentName: "calc", deploymentContext: "${env.BRANCH_NAME}", deploymentNamespace: "support", containerName: "calc", deploymentImageName: "calc"],
       
     ]
 
