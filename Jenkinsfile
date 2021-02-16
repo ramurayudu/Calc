@@ -59,7 +59,7 @@ env.NODE_ENV = 'main'
     }
 
     stage ('Install & Build') {
-      sh 'cat /home/jenkins/npmrc/.npmrc > ~/.npmrc'
+      
 	    sh 'npm cache clean -f'
   /*    sh 'npm config set registry https://innroad.jfrog.io/innroad/api/npm/innroad-npm/' */
       sh "npm install -no-cache"
