@@ -64,7 +64,7 @@ env.NODE_ENV = 'main'
   /*    sh 'npm config set registry https://innroad.jfrog.io/innroad/api/npm/innroad-npm/' */
       sh "npm install -no-cache"
       sh "npm run build"
-      sh "cd server && npm install"
+      
     }
 
     stage ('Run Unit Tests') {
