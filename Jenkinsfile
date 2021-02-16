@@ -67,9 +67,7 @@ env.NODE_ENV = 'main'
       
     }
 
-    stage ('Run Unit Tests') {
-      sh "npm test"
-    }
+    
 
     stage ("Publish to Docker") {
       echo "Starting Publish To Docker"
