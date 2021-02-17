@@ -23,7 +23,7 @@ env.NODE_ENV = 'main'
     ]
 
     def dockerDeploymentSettings = [
-      [deploymentName: "calc", deploymentContext: "${env.BRANCH_NAME}", deploymentNamespace: "support", containerName: "calc", deploymentImageName: "calc"],
+      [deploymentName: "calc", deploymentContext: "${env.BRANCH_NAME}", deploymentNamespace: "loginapp", containerName: "calc", deploymentImageName: "calc"],
       
     ]
 
