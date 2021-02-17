@@ -13,7 +13,7 @@ env.NODE_ENV = 'main'
     def testAssemblies           = [] as String[]
     def projectsToPublish        = [] as String[]
     def deploymentImageName      = "calc"
-    def deploymentNamespace      = "support"
+    def deploymentNamespace      = "loginapp"
     def hotfixRegex              = "hotfix\\/.*"
     def qaRegex                  = "qa\\d?"
 
