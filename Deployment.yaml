@@ -1,35 +1,52 @@
+apiVersion: extensions/v1beta1
 kind: Deployment
-apiVersion: apps/v1
 metadata:
-  name: reactcalc
+  name: calc
+  labels:
+    app: calc
+    env: main
+  namespace: loginapp
 spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: reactcalc
+  replicas: 1
+  revisionHistoryLimit: 1
   template:
     metadata:
+      name: calc
       labels:
-        app: reactcalc
+        env: main
+        app: calc
     spec:
+      
       containers:
-        - name: reactcalc
-          image: sujithkumar597/calc:13
-          imagePullPolicy: Always
-          ports:
-            - containerPort: 80
-      restartPolicy: Always
+      - name: calc
+        image: devopsinnroad.jfrog.io/rayudu-builds/calc:df1c758
+        imagePullPolicy: Always
+        resources:
+        ports:
+        - containerPort: 80
+          name: http
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: loginapp
+
 ---
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
-  name: reactcalc
+  annotations:
+    alb.ingress.kubernetes.io/healthcheck-path: /
+    alb.ingress.kubernetes.io/success-codes: 200-499
+  name: calc
+  namespace: loginapp
+  labels:
+    Domain: login.qa4innroad.com
 spec:
-  type: NodePort
-  ports:
-    - port: 80
-      targetPort: 80
-      protocol: TCP
-      nodePort: 31114
   selector:
-    app: reactcalc
+    app: calc
+    env: main
+  ports:
+  - port: 80
+    name: http
+    targetPort: 80
+    protocol: TCP
+  type: LoadBalancer
